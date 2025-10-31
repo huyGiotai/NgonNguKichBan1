@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "5f8b0dc2e95f47cdc246dc0a"
+  },
+  "id": 1,
+  "fullname": "Admin",
+  "email": "admin@gmail.com",
+  "password": "$2a$16$7DNIJm6ye79xEyWDVwd88uuxZAt4LMkJ9heNIB7PD8zSlADMKFkPu",
+  "roles": [
+    "ADMIN"
+  ],
+  "photo": "1662723974488_Alfred.png"
+},{
+  "_id": {
+    "$oid": "5f9c4510a3de3a0c50c6ea43"
+  },
+  "id": 13,
+  "fullname": "Thái Văn Hà",
+  "email": "ha0@gmail.com",
+  "password": "$2a$16$gPTLCKrP6TAcd7.z1nwCV.r24j.Xoiw8Lue/PAKj9ev41h4Bq0lMW",
+  "roles": [
+    "CUSTOMER",
+    "STOCKER"
+  ],
+  "__v": 0,
+  "photo": "1662723954846_Amina Elshal.png"
+},{
+  "_id": {
+    "$oid": "631bec7a49a87121502b4e27"
+  },
+  "id": 17,
+  "fullname": "Ha Hoa",
+  "email": "ha@gmail.com",
+  "password": "$2a$16$eLDE6seB65JKZwdsL2h.pub.g4eTTZFV3i/qXpFYTF.xnc5oQ27ZG",
+  "roles": [
+    "ADMIN",
+    "CUSTOMER",
+    "STOCKER"
+  ],
+  "__v": 0,
+  "photo": "1662775897108_Matthew.png"
+},{
+  "_id": {
+    "$oid": "631bec8349a87121502b4e28"
+  },
+  "id": 18,
+  "fullname": "Ha Hoa",
+  "email": "ha@gmail.com",
+  "password": "$2a$16$RQx6OKq2SVGXecV1cDd3Lelq/qIA.6eVGNhssfTyMWoemovumulw.",
+  "roles": [
+    "CUSTOMER"
+  ],
+  "__v": 0,
+  "isDeleted": true
+}]
