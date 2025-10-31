@@ -1,22 +1,25 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
-const Model = new mongoose.Schema(
-  {
-    id: Number,
-    fullname: String,
-    email: String,
-    password: String,
-    photo: String,
-    roles: Object,
-    isDeleted: Boolean
-  },{
-    collection: 'user'
+var UserSchema = new mongoose.Schema({
+  userId: { type: Number, unique: true },
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  admin: {
+    type: Boolean,
+    default: false
   }
-);
-    
-Model.plugin(require('../modules/auto-increment').getInstance().plugin, {
-  model: 'user',
-  field: 'id'
 });
 
-module.exports = mongoose.model('user', Model);
+UserSchema.plugin(AutoIncrement, { inc_field: 'userId' });
+module.exports = mongoose.model('User', UserSchema);

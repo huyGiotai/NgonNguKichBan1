@@ -14,7 +14,7 @@ mongoose.Promise = global.Promise;
 const connection =
   mongoose.connect(config.database.connection, config.database.option);
 
-require('./modules/auto-increment').init(connection);
+
  
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');

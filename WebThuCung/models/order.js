@@ -1,32 +1,21 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
-const Model = new mongoose.Schema(
-  {
-    id: Number,
-    name: String,
-    email: String,
-    phone: String,
-    msg: String,
-    details: Object,
-    total: Number,
-    status: Number,
-    payment: String,
-    ship: String,
-    isDeleted: Boolean,
-    userId : Number,
-    created_at: {
-      type: Date,
-      require: true
-    },
+var OrderSchema = new mongoose.Schema({
+  orderId: { type: Number, unique: true },
+  products: {
+    type: Object,
+    required: true
   },
-  {
-    collection: 'order'
+  address: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
   }
-);
-    
-Model.plugin(require('../modules/auto-increment').getInstance().plugin, {
-  model: 'order',
-  field: 'id'
 });
 
-module.exports = mongoose.model('order', Model);
+OrderSchema.plugin(AutoIncrement, { inc_field: 'orderId' });
+module.exports = mongoose.model('Order', OrderSchema);

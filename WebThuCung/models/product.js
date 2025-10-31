@@ -1,28 +1,31 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
-const Model = new mongoose.Schema(
-  {
-    id: Number,
-    categoryId: Number,
-    name: String,
-    urlRewriteName: String,
-    photo: String,
-    description: String,
-    price: Number,
-    sale: Number,
-    sale1: Number,
-    salePrice: Number,
-    isDeleted: Boolean,
-      
+var ProductSchema = new mongoose.Schema({
+  productId: { type: Number, unique: true },
+  title: {
+    type: String,
+    required: true
   },
-  {
-    collection: 'product'
+  slug: {
+    type: String
+  },
+  desc: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  image: {
+    type: String
   }
-);
-    
-Model.plugin(require('../modules/auto-increment').getInstance().plugin, {
-  model: 'product',
-  field: 'id'
 });
 
-module.exports = mongoose.model('product', Model);
+ProductSchema.plugin(AutoIncrement, { inc_field: 'productId' });
+module.exports = mongoose.model('Product', ProductSchema);

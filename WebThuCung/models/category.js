@@ -1,20 +1,16 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
-const Model = new mongoose.Schema(
-  {
-    id: Number,
-    name:  String,
-    urlRewriteName: String,
-    isDeleted: Boolean
+var CategorySchema = new mongoose.Schema({
+  categoryId: { type: Number, unique: true },
+  title: {
+    type: String,
+    required: true
   },
-  {
-    collection: 'category'
+  slug: {
+    type: String
   }
-);
-    
-Model.plugin(require('../modules/auto-increment').getInstance().plugin, {
-  model: 'category',
-  field: 'id'
 });
 
-module.exports = mongoose.model('category', Model);
+CategorySchema.plugin(AutoIncrement, { inc_field: 'categoryId' });
+module.exports = mongoose.model('Category', CategorySchema);
